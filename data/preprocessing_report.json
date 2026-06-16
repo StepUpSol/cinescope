@@ -1,0 +1,65 @@
+{
+  "rows_in": 3201,
+  "rows_out": 2913,
+  "dropped_invalid_year": 21,
+  "dropped_missing_genre": 267,
+  "field_missingness_pct": {
+    "US DVD Sales": 82.4,
+    "Running Time min": 62.2,
+    "Director": 41.6,
+    "Rotten Tomatoes Rating": 27.5,
+    "MPAA Rating": 18.9,
+    "Creative Type": 13.9,
+    "Source": 11.4,
+    "Major Genre": 8.6,
+    "Distributor": 7.2,
+    "IMDB Rating": 6.7,
+    "IMDB Votes": 6.7,
+    "US Gross": 0.2,
+    "Worldwide Gross": 0.2,
+    "Production Budget": 0.0,
+    "Title": 0.0
+  },
+  "genre_distribution": {
+    "Drama": 784,
+    "Comedy": 674,
+    "Action": 419,
+    "Adventure": 272,
+    "Thriller/Suspense": 239,
+    "Horror": 219,
+    "Romantic Comedy": 137,
+    "Musical": 49,
+    "Documentary": 43,
+    "Western": 36,
+    "Black Comedy": 36,
+    "Concert/Performance": 5
+  },
+  "decade_distribution": {
+    "1920": 1,
+    "1930": 4,
+    "1940": 2,
+    "1950": 13,
+    "1960": 32,
+    "1970": 56,
+    "1980": 237,
+    "1990": 729,
+    "2000": 1758,
+    "2010": 81
+  },
+  "mpaa_distribution": {
+    "R": 1130,
+    "PG-13": 854,
+    "Not Rated": 497,
+    "PG": 347,
+    "G": 76,
+    "NC-17": 7,
+    "Open": 2
+  },
+  "rows_with_financials": 2887,
+  "median_roi": 1.86,
+  "profitable_pct": 67.3,
+  "year_range": [
+    1928,
+    2015
+  ]
+}

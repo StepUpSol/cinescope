@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CineScope — Three Decades of Cinema, Decoded</title>
+  <meta name="description" content="Interactive D3.js exploration of 2,900+ films: genre evolution, profitability, critic vs audience divergence, runtime distributions, and director impact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">DSC327 · Data Visualization Techniques · BDS 6</div>
+      <h1>Cine<span>Scope</span></h1>
+      <p class="tagline">Three decades of cinema, decoded. <span class="dim">2,913 films · 12 genres · 1928 → 2015</span></p>
+      <div class="hero-stats">
+        <div class="stat"><div class="num" id="stat-films">—</div><div class="lab">films in view</div></div>
+        <div class="stat"><div class="num" id="stat-roi">—</div><div class="lab">median ROI</div></div>
+        <div class="stat"><div class="num" id="stat-profitable">—</div><div class="lab">profitable</div></div>
+        <div class="stat"><div class="num" id="stat-gross">—</div><div class="lab">total worldwide gross</div></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="filters" id="filters">
+      <div class="f-block">
+        <label class="f-label">Year range</label>
+        <div id="year-slider"></div>
+        <div class="f-readout"><span id="year-min">1980</span><span id="year-max">2015</span></div>
+      </div>
+
+      <div class="f-block">
+        <label class="f-label">Genres</label>
+        <div id="genre-chips" class="chips"></div>
+      </div>
+
+      <div class="f-block">
+        <label class="f-label">MPAA rating</label>
+        <div id="mpaa-chips" class="chips"></div>
+      </div>
+
+      <div class="f-block">
+        <label class="f-label">Search title or director</label>
+        <input type="search" id="search" placeholder="e.g. Nolan, Inception" autocomplete="off" />
+      </div>
+
+      <button class="reset" id="reset">Reset all filters</button>
+
+      <div class="f-block insights">
+        <label class="f-label">Insights for current view</label>
+        <ul id="auto-insights"></ul>
+      </div>
+    </aside>
+
+    <section class="charts">
+
+      <article class="chart-card" id="card-stream">
+        <header>
+          <h2>1 · The Genre Tides</h2>
+          <p>Annual share of releases by genre. Streamgraph reveals when each genre crested and when it receded. Hover any band to read its year-by-year story.</p>
+        </header>
+        <div class="chart-host" id="chart-stream"></div>
+        <footer class="caption" id="cap-stream"></footer>
+      </article>
+
+      <article class="chart-card" id="card-scatter">
+        <header>
+          <h2>2 · The Profit Galaxy</h2>
+          <p>Production budget vs worldwide gross on a log–log canvas. The diagonal is break-even; everything above it earned money back. Drag a rectangle to lock the other charts onto that slice.</p>
+        </header>
+        <div class="chart-host" id="chart-scatter"></div>
+        <footer class="caption" id="cap-scatter"></footer>
+      </article>
+
+      <article class="chart-card" id="card-quadrant">
+        <header>
+          <h2>3 · Critics vs Crowd</h2>
+          <p>Rotten Tomatoes (critics) against IMDb (audience). The four quadrants split films into Universal Hits, Critic Darlings, Crowd-Pleasers, and the Universally Panned. Click a quadrant to keep only its films.</p>
+        </header>
+        <div class="chart-host" id="chart-quadrant"></div>
+        <footer class="caption" id="cap-quadrant"></footer>
+      </article>
+
+      <article class="chart-card" id="card-heatmap">
+        <header>
+          <h2>4 · Profitability Heatmap</h2>
+          <p>Median return on investment for every genre, every decade. Diverging color: orange means money lost on the median film, teal means money made. Cells are clickable.</p>
+        </header>
+        <div class="chart-host" id="chart-heatmap"></div>
+        <footer class="caption" id="cap-heatmap"></footer>
+      </article>
+
+      <article class="chart-card" id="card-directors">
+        <header>
+          <h2>5 · Director Leaderboard</h2>
+          <p>Top 15 directors in the current view, ranked by aggregate worldwide gross. Bars decompose into individual films on hover. Click a director to filter every other chart to their work.</p>
+        </header>
+        <div class="chart-host" id="chart-directors"></div>
+        <footer class="caption" id="cap-directors"></footer>
+      </article>
+
+      <article class="chart-card" id="card-runtime">
+        <header>
+          <h2>6 · Runtime DNA</h2>
+          <p>Ridgeline of runtime distributions per genre. Where the ridge bulges is where the genre lives. Documentaries cluster short, epics drift long, comedies stay tight around 95 minutes.</p>
+        </header>
+        <div class="chart-host" id="chart-runtime"></div>
+        <footer class="caption" id="cap-runtime"></footer>
+      </article>
+
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div>
+      <strong>CineScope</strong> · Data: Vega Movies (3,201 films, cleaned to 2,913). Built with D3.js v7.
+    </div>
+    <div class="credits">
+      DSC327 Lab Terminal · Muhammad Umar (FA23-BDS-031) &amp; Muhammad Asharib Khan (FA23-BDS-025) · BDS 6 · COMSATS University Islamabad
+    </div>
+    <div class="repo"><a href="https://github.com/StepUpSol/cinescope" target="_blank" rel="noopener">Source on GitHub →</a></div>
+  </footer>
+
+  <div id="tooltip" class="tooltip" role="tooltip"></div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
