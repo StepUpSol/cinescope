@@ -6,7 +6,7 @@
 
 **Team:**
 - Muhammad Umar — FA23-BDS-031
-- Muhammad Asharib Khan — FA23-BDS-025
+- Muhammad Ali Arshad — FA23-BDS-024
 
 **Live demo:** https://stepupsol.github.io/cinescope/
 
