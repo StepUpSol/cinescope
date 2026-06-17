@@ -2,7 +2,7 @@
 
 > The report deliverable for the Lab Terminal Project, DSC327. Covers dataset, preprocessing, EDA, visualization choices and their justification, interaction techniques, and the challenges that shaped the final design.
 
-**Authors:** Muhammad Umar (FA23-BDS-031), Muhammad Asharib Khan (FA23-BDS-025)
+**Authors:** Muhammad Umar (FA23-BDS-031), Muhammad Ali Arshad (FA23-BDS-024)
 **Course:** DSC327 — Data Visualization Techniques · BDS 6 · COMSATS Islamabad
 
 ---
